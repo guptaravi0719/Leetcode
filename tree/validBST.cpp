@@ -35,8 +35,42 @@ Explanation: The root node's value is 5 but its right child's value is 4.
  
 
 
+////////////////////////////////////////////////////////////////
 
 
+    bool isBST(TreeNode* root, TreeNode* l=NULL, TreeNode* r=NULL)
+{
+    // Base condition
+    if (root == NULL)
+        return true;
+ 
+    // if left node exist then check it has
+    // correct data or not i.e. left node's data
+    // should be less than root's data
+
+    if (l != NULL and root->val <= l->val)
+        return false;
+ 
+    // if right node exist then check it has
+    // correct data or not i.e. right node's data
+    // should be greater than root's data
+
+    if (r != NULL and root->val >= r->val)
+        return false;
+ 
+    // check recursively for every node.
+    return isBST(root->left, l, root) and
+           isBST(root->right, root, r);
+}
+   
+    
+    bool isValidBST(TreeNode* root) {
+      if(root==NULL){
+          return true;
+      }   
+return isBST(root,NULL,NULL);
+        
+    }
 
 
 
